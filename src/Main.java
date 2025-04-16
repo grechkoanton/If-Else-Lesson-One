@@ -21,14 +21,17 @@ public class Main {
         } else {
             System.out.println("На улице ниже 5 градусов, нужно надеть шапку");
         }
-        // Задача 3
-        int speedCar = 60;
-        if (speedCar >= 60) {
-            System.out.println("Если скорость автомобиля свыше 60 км/ч, то придется заплатить штраф");
+        // Задача 3 Доработано
+        int speedCar = 65;
+        if (speedCar > 60) {
+            System.out.println("Если скорость автомобиля свыше 60 км/ч, то придется заплатить штраф.");
+        } else {
+            System.out.println("Если скорость автомобиля ниже 60 км/ч, то можно ездить спокойно.");
         }
-        int speedTachka = 40;
-        if (speedTachka < 60) {
-            System.out.println("Если скорость тачки ниже 60 км/ч, то можно ездить спокойно");
+        if (speedCar < 60) {
+            System.out.println("Если скорость автомобиля свыше 60 км/ч, то придется заплатить штраф.");
+        } else {
+            System.out.println("Если скорость автомобиля ниже 60 км/ч, то можно ездить спокойно.");
         }
         // Задача 4
         int ageArtem = 5;
@@ -64,32 +67,50 @@ public class Main {
         if (ageChild15 > 14) {
             System.out.println("Если ребенок старше 14 лет, то он может кататься на аттракционе без сопровождения взрослого.");
         }
-        // Задача 6
-        int trainCarriageAllPlace = 102;
-        int trainCarriageAllSeats = 60;
-        int trainCarriageAllStand = 102 - 60;
-        if (trainCarriageAllSeats == trainCarriageAllPlace - trainCarriageAllStand) {
-            System.out.println("В вагоне есть сидячие места в кол - ве 60 штук.");
+        // Задача 6 Доработано
+        int trainCarriageAllPlace = 102; // 52 // 7
+        int trainCarriageAllSeatsPlace = 60; // 30 // 0
+        int trainCarriageAllStandPlace = 102 - 60; // 22 // 7
+        int peopleInAdlerSeatsPlace = 30;
+        int peopleInAdlerStandPlace = 20;
+        trainCarriageAllPlace = trainCarriageAllPlace - (peopleInAdlerStandPlace + peopleInAdlerSeatsPlace);
+        trainCarriageAllSeatsPlace = trainCarriageAllSeatsPlace - peopleInAdlerSeatsPlace;
+        trainCarriageAllStandPlace = trainCarriageAllStandPlace - peopleInAdlerStandPlace;
+        if (trainCarriageAllPlace > 0 & trainCarriageAllSeatsPlace > 0 & trainCarriageAllStandPlace > 0) {
+            System.out.println("В Адлере зашли люди в поезд и в нашем вагоне остались еще свободные места в кол-ве " + trainCarriageAllPlace + " штук, из них сидячих мест осталось " + trainCarriageAllSeatsPlace + " штук, а стоячих " + trainCarriageAllStandPlace + " места.");
         }
-        if (trainCarriageAllStand == trainCarriageAllPlace - trainCarriageAllSeats) {
-            System.out.println("В вагоне есть стоячие места в кол - ве 40 штук.");
-        }
-        if (trainCarriageAllPlace > trainCarriageAllSeats + trainCarriageAllStand) {
-            System.out.println("В вагоне еще остались сидячие или стоячие места.");
+        int peopleInKrasnodarSeatsPlace = 30;
+        int peopleInKrasnodarStandPlace = 15;
+        trainCarriageAllPlace = trainCarriageAllPlace - (peopleInKrasnodarSeatsPlace + peopleInKrasnodarStandPlace);
+        trainCarriageAllSeatsPlace = trainCarriageAllSeatsPlace - peopleInAdlerSeatsPlace;
+        trainCarriageAllStandPlace = trainCarriageAllStandPlace - peopleInKrasnodarStandPlace;
+        if (trainCarriageAllPlace > 0 & trainCarriageAllSeatsPlace > 0 & trainCarriageAllStandPlace > 0) {
+            System.out.println("В Краснодаре зашли люди в поезд и в нашем вагоне остались еще свободные места в кол-ве " + trainCarriageAllPlace + " штук, из них сидячих мест осталось " + trainCarriageAllSeatsPlace + " штук, а стоячих " + trainCarriageAllStandPlace + " места.");
         } else {
-            System.out.println("Вагон уже полностью забит, мест нет.");
+            System.out.println("В Краснодаре зашли люди в поезд и в нашем вагоне остались еще свободные места в кол-ве " + trainCarriageAllPlace + " штук, из них сидячих мест больше нет, а стоячих осталось " + trainCarriageAllStandPlace + " мест.");
         }
-            // Задача 7
-            int one = 1;
-            int two = 2;
-            int three = 3;
-            if (one > two && one > three) {
-                System.out.println("Число один большее из трех чисел: 1, 2, 3");
-            } else if (two > one && two > three) {
-                System.out.println("Число два большее из трех чисел: 1, 2, 3");
-            } else {
-                System.out.println("Число три большее из трех чисел: 1, 2, 3");
-            }
+        int peopleInVolgogradStandPlace = 7;
+        trainCarriageAllPlace = trainCarriageAllPlace - peopleInVolgogradStandPlace;
+        trainCarriageAllStandPlace = trainCarriageAllStandPlace - peopleInVolgogradStandPlace;
+        if (trainCarriageAllPlace > 0) {
+            System.out.println("В Волгограде зашли люди в поезд и в нашем вагоне всего осталось " + trainCarriageAllPlace + " мест.");
+        } else if (trainCarriageAllSeatsPlace > 0 || trainCarriageAllStandPlace > 0) {
+            System.out.println("В Волгограде зашли люди в поезд и в нашем вагоне вдруг осталось " + trainCarriageAllSeatsPlace + " сидячих " + trainCarriageAllStandPlace + " стоячих мест.");
+        } else {
+            System.out.println("После того, как в Волгограде зашли люди в поезд, вагон стал уже полностью забит, свободных мест нет.");
+        }
 
+        // Задача 7
+        int one = 1;
+        int two = 2;
+        int three = 3;
+        if (one > two && one > three) {
+            System.out.println("Число один большее из трех чисел: 1, 2, 3");
+        } else if (two > one && two > three) {
+            System.out.println("Число два большее из трех чисел: 1, 2, 3");
+        } else {
+            System.out.println("Число три большее из трех чисел: 1, 2, 3");
         }
+
     }
+}
